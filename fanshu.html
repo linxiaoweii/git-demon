@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{margin: 0px;padding: 0px}
+        .book{
+            width: 300px;
+            height: 400px;
+            position: relative;
+            margin: 50px auto;
+            z-index: 0;
+        }
+        .book div{
+            width: 300px;
+            height: 400px;
+            border: 1px solid black;
+            position: absolute;
+            top:0px;left: 0px;
+            background-color: white;
+            font-size: 30px;
+            -webkit-transform-origin:0px 200px ;
+            -webkit-transition: all 1s ease;
+        }
+        .pageback{
+            -webkit-transform:rotateY(0deg)
+        }
+        .pageforwod{
+            -webkit-transform:rotateY(180deg)
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            var div=document.querySelectorAll(".book div")
+            for(var i=0;i<div.length;i++){
+                div[i].style.zIndex=0-i;
+            }
+            for(var j=0;j<div.length;j++){
+                div[j].index=j;
+                div[j].onclick=function(){
+                    if(this.classList.contains("pageback")){
+                        this.classList.add("pageforwod")
+                        this.classList.remove("pageback");
+                    }
+                    else{
+                        this.classList.add("pageback")
+                        this.classList.remove("pageforwod");
+                    }
+                    this.style.zIndex*=-1;
+                }
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <div class="book">
+        <div class="pageback">封面</div>
+        <div class="pageback">page1</div>
+        <div class="pageback">page2</div>
+        <div class="pageback">page3</div>
+        <div class="pageback">page4</div>
+        <div class="pageback">page5</div>
+    </div>
+</body>
+</html>
