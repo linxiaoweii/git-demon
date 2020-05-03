@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>轮播图</title>
+    <style>
+        *{margin: 0px;padding: 0px}
+        .box,img{
+            width: 400px;
+            height: 300px;
+        }
+        .box{
+            margin: 50px auto;
+            position: relative;
+        }
+        .box img{
+            position: absolute;
+            top:0px;left: 0px;
+            opacity: 0;
+            -webkit-transition: all 2s ease;
+        }
+        .box .text{
+            opacity: 1;
+            -webkit-transition: all 2s ease;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+            setInterval("fun()",1000)
+        }
+        var i=0;
+        function fun(){
+            var v=document.querySelectorAll(".box img");
+            var v2;
+            if(i==v.length-1){  i=0;  }
+            else{ ++i; }
+            v.forEach(function(value,index){
+                value.style.opacity=0;
+                value.classList.remove("text");
+            })
+            v2=document.querySelectorAll(".box img")[i];
+            v2.style.opacity=1;
+            v2.classList.add("text");
+        }
+    </script>
+</head>
+<body>
+    <div class="box">
+        <img src="img/or10.jpg" class="text">
+        <img src="img/or12.jpg">
+        <img src="img/or27.jpg">
+        <img src="img/or33.jpg">
+        <img src="img/or46.jpg">
+    </div>
+</body>
+</html>
