@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="./js/jquery-1.10.2.js"></script>
+    <style>
+    body{
+            background-image: url(img/beijing3.jpg);
+            background-size:cover;
+            background-attachment: fixed;
+        }
+    *{margin:0px;padding:0px;}
+    a{
+            text-decoration: none;
+        }
+    .header-1{
+      display:flex;
+      width:100%;
+      justify-content: center;
+      list-style-type: none;
+      background-color:#1e212a;
+      position: fixed;
+      z-index: 1;
+    }
+    .header-1 img{
+        height:57px;
+    }
+    .one{
+        width:800px;
+        display:flex;
+      justify-content: center;
+      list-style-type: none;
+      background-color:#1e212a;
+      position: relative;
+    }
+    .one li{
+        margin:15px 40px 0px 40px;
+        text-align: center;
+        border:2px solid #1e212a;
+    }
+    .one li a{
+    color:white;
+    font-size: 19px;
+    }
+    .two{
+    width:80px;
+    position: absolute;;
+    top:15px;
+    left:850px;
+    }
+    .two a{
+    font-size: 18px;
+    color:white;
+    text-decoration: none;
+    }
+  
+    .footer{
+        width:100%;
+        height:150px;
+        background-color:#3e414b;
+        position: absolute;
+        top:1520px;
+        color:white;
+        display:flex;
+        justify-content: center;
+        opacity: 0.7;
+    }
+    .footer .img1{
+    margin-top:40px;
+    width:220px;
+    height:80px;
+    margin-right:500px;
+    }
+    .footer .img2{
+        margin-top:10px;
+        width:100px;
+        height:100px;
+    }
+    .footer .five{
+        margin-top:10px;
+        width:120px;
+    }
+    .footer .five a{
+       color:white;
+    }
+    .footer .five a:hover{
+        text-decoration: underline;
+    }
+    .footer .six{
+        width:100px;
+        height:120px;
+        text-align: center;
+    }
+    .header-1 ul li:hover{
+    border-bottom: 2px solid blue;
+    }
+    .nine{
+    display:none;
+    list-style-type: none;
+    background-color:gray;
+    opacity: 0.8;
+    position: absolute;
+    top:57px;
+    width:200px;
+    left:620px;
+    }
+    .header-1 .nine li{
+    padding:15px;
+    border:2px solid gray;
+    }
+    .header-1 .nine li a{
+    color:white;
+    }
+    .text:hover .nine{
+    display:block;
+    }
+    .two a:hover{
+    color:blue;
+    }
+    .data{
+            width: 780px;
+            margin: 0 auto;
+    }
+    .item{
+        position: relative;
+       border-top: 1px solid #ccc;
+       padding: 20px;
+    }
+    .item>p{
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+    }
+    .xiang .title{
+        color: #30558b;
+    }
+    .xiang p{
+        margin: 12px 0px;
+    }
+    .taglab{
+        border: 1px solid #ccc;
+        padding: 5px;
+    }
+    .qi span{
+        margin-right: 20px;
+    }
+    .anter{
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .list{
+        overflow: hidden;
+    }
+    .list ul{
+        float: right;
+        list-style-type: none;
+        overflow: hidden;
+    }
+    .list ul li{
+        float: left;
+        border: 1px solid #999;
+        
+        border-radius: 5px;
+        margin: 5px;
+    }
+    .list ul li span{
+        display: block;
+        padding: 5px 10px;
+    }
+    .disabled{
+        background-color: #ccc;
+    }
+    .active{
+        background-color: #5dbef1;
+        color: white;
+    }
+    .list ul li:hover{
+        background-color: #eee;
+    }
+    .update{
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100%;
+        position: fixed;
+        top: 50px;
+        left: 0px;
+        display: none;
+    }
+    .update .frm{
+        width: 1000px;
+        border: 1px solid #30558b;
+        background-color: white;
+        margin: 50px auto;
+        padding: 20px;
+        position: relative;
+    }
+    .update .frm h2{
+        text-align: center;
+    }
+    .update .frm .cloed{
+        display: block;
+        width: 60px;
+        height: 60px;
+        font-size: 60px;
+        line-height: 60px;
+        font-weight: 900;
+        color: brown;
+        background-color: red;
+        position: absolute;
+        top: -20px;
+        right: -20px;
+        text-align: center;
+        text-decoration: none;
+    }
+    table .lab1,table .lab2,table .lab3,table .lab4,table .lab5{
+        color: red;
+    }
+    .update .frm table{
+        width: 500px;
+        margin: 0px auto;
+    }
+    .update .frm table tr{
+        width: 100%;
+        display: block;
+    }
+    .update .frm td{
+        height: 80px;
+        width: 150px;
+    }
+    .tj{
+        display: block;
+        width: 60px;
+        height: 30px;
+        margin: 10px auto;
+    }
+    </style>
+   <script>
+    $(function(){
+        //设置隐藏div的高度
+        $(".update").height($(window).height())
+        //查出标题组，题目java，js，html，css
+        $.ajax({
+            type:"get",
+            url:"https://39.106.118.44:8443/librarytag/tag",
+            data:"",
+            success:function(msg){
+                $(".bq").append("<p></p>")
+                for(var i=0;i<msg.length;i++){
+                    $(".bq p").append("<lable><input type='checkbox' value='"+msg[i].tagId+"' name='tags'>"+msg[i].tagName+"</lable>")
+                }
+            }
+        })
+        //查询按钮点击
+        $(".ct").click(function(){
+            var parm=$(".container input, .container select,.container textarea").serialize()
+            parm+="&index=0&size=5"
+            selall(parm,1)
+        })
+        //添加选项
+        $(".add").click(function(){
+            $(".questionsel .xx").append('<p><input type="text" name="questionOptions" class="xx1">'+'<input type="button" value=" - " class="del"></p>')
+        })
+        //删除选项
+        $(".questionsel").delegate(".del","click",function(){
+            $(this).parent().remove()
+        })
+        //修改页面的表单验证
+        $(".tj").click(function(){
+            var quet=$("input[name=questionOptions]")
+            $("table .lab1,table .lab2,table .lab3,table .lab4,table .lab5").html("*必填")
+            var flg=false
+            var flg1=false;
+            quet.each(function(){
+                if($(this).val()==""){
+                    flg1=true
+                }
+            })
+            $(".update input[name=tags]").each(function(){
+                if($(this).prop("checked")==true){
+                    flg=true;
+                }
+            })
+            if($(".update textarea[name=questionTitle]").val()==""){
+                $(".lab3").html("*题干不能为空")
+            }
+            else if(($(".update .questionsel").css("display")=="block"&&flg1==true)){
+                $(".lab1").html("*选项不能为空")
+            }
+            else if($(".update textarea[name=answer]").val()==""){
+                $(".lab4").html("*答案不能为空")
+            }
+            else if(flg==false){
+                    $(".lab2").html("至少选择一个复选框")
+                }
+            else{
+               var parm=$(".update input,.update select,.update textarea").serialize();
+            //    alert(parm)
+            $.ajax({
+                type:"PUT",
+                url:"https://39.106.118.44:8443/library/quiz/"+frm.id.value+"/",
+                data:parm,
+                success:function(data){
+                    console.log(data)
+                    $(".update").css({display:"none"});
+                    $(".data .item ."+data.id).empty();
+                    $(".data .item ."+data.id).append("<p class='title' onclick='show(\""+data.id+"\")'>"+data.question.title+"</p>")
+                    $(".data .item ."+data.id).append("<p class='anter'>"+data.answer.toString().trim().replace("<","\<").replace(">","\>")+"</p>")
+                    for(var j=0;j<data.tags.length;j++){
+                        $(".data .item ."+data.id).append("<span class='taglab'>"+data.tags[j]+"</span>")
+                    }
+                    var type=""
+                    switch(data.type){
+                        case 1:type="单选题";break;
+                        case 2:type="多选题";break;
+                        case 3:type="填空题";break;
+                        case 4:type="判断题";break;
+                        case 5:type="简答题";break;
+                        case 6:type="输出题";break;
+                        case 7:type="编程题";break;
+                    }
+                    var level=""
+                    switch(data.level){
+                        case 1:level="简单";break;
+                        case 2:level="容易";break;
+                        case 3:level="中";break;
+                        case 4:level="难";break;
+                        case 5:level="非常难";break;
+                    }
+                    $(".data .item ."+data.id).append("<p class='qi'><span>题型："+type+"</span><span>难度："+level+"</span></p>")
+                }
+            })
+            }
+        })
+        $(".cloed").click(function(){
+            $(".update").css({display:"none"})
+        })
+    })
+    //查询函数
+    function selall(parm,indexlen){
+        $.ajax({
+            type:"GET",
+            url:"https://39.106.118.44:8443/library/quiz",
+            data:parm,
+            success:function(data){
+                console.log(data)
+                $(".data").empty()
+                $(".list ul").empty()
+                for(var i=0;i<data.content.length;i++){
+                    $(".data").append("<div class='item'><div class='xiang "+data.content[i].id+"'></div>"+"<p><input type='button' value='删除' class='del' onclick='del(\""+data.content[i].id+"\")'></p></div>")
+                    $(".xiang").eq(i).append("<p class='title' onclick='show(\""+data.content[i].id+"\")'>"+data.content[i].question.title+"</p>")
+                    $(".xiang").eq(i).append("<p class='anter'>"+data.content[i].answer.toString().trim().replace("<","\<").replace(">","\>")+"</p>")
+                    for(var j=0;j<data.content[i].tags.length;j++){
+                        $(".xiang").eq(i).append("<span class='taglab'>"+data.content[i].tags[j]+"</span>")
+                    }
+                    var type=""
+                    switch(data.content[i].type){
+                        case 1:type="单选题";break;
+                        case 2:type="多选题";break;
+                        case 3:type="填空题";break;
+                        case 4:type="判断题";break;
+                        case 5:type="简答题";break;
+                        case 6:type="输出题";break;
+                        case 7:type="编程题";break;
+                    }
+                    var level=""
+                    switch(data.content[i].level){
+                        case 1:level="简单";break;
+                        case 2:level="容易";break;
+                        case 3:level="中";break;
+                        case 4:level="难";break;
+                        case 5:level="非常难";break;
+                    }
+                    $(".xiang").eq(i).append("<p class='qi'><span>题型："+type+"</span><span>难度："+level+"</span></p>")
+                }
+                if(data.totalPages<=1){
+                    $(".list.ul").append("")
+                }
+                else{
+                    $(".list ul").append("<li><span class='page-first' onclick='first(0)'>《</span></li>")
+                    $(".list ul").append("<li><span class='page-prev' onclick='prev()'>&lt;</span></li>")
+                    var start=0;
+                    var end=data.totalPages;
+                    if(indexlen>5&&data.totalPages>10){
+                        start=indexlen-1;
+                        end=indexlen+9;
+                    }
+                    if(indexlen>data.totalPages-5){
+                        end=data.totalPages
+                    }
+                    for(var i=start;i<end;i++){
+                        if(i==data.number){
+                            $(".list ul").append("<li><span class='page-link active'>"+(i+1)+"</span></li>")
+                        }
+                        else{
+                            $(".list ul").append("<li><span class='page-link' onclick='numbtn("+(i+1)+")'>"+(i+1)+"</span></li>")
+                        }
+                    }
+                    $(".list ul").append("<li><span class='page-next' onclick='next("+data.totalPages+")'>&gt;</span></li>")
+                    $(".list ul").append("<li><span class='page-last' onclick='last("+data.totalPages+")'>》</span></li>")
+                    if(data.first){
+                        $(".page-first,.page-prev").addClass("disabled")
+                    }
+                    else if(data.last){
+                        $(".page-next,.page-last").addClass("disabled")
+                    }
+                }
+            }
+
+        })
+
+    }
+    //跳转到尾页
+    function last(num){
+        var parm=$(".container input, .container select,.container textarea").serialize()
+        parm+="&index="+(num-1)+"&size=5"
+        selall(parm,num-1)
+    }
+    //跳转到首页
+    function first(num){
+        var parm=$(".container input, .container select,.container textarea").serialize()
+        parm+="&index="+num+"&size=5"
+        selall(parm,1)
+    }
+    //上一页
+    function prev(){
+        var parm=$(".container input, .container select,.container textarea").serialize()
+        var page=$(".active").text()
+        if(parseInt(page)>1){
+            parm+="&index="+(page-2)+"&size=5"
+            selall(parm,page-1)
+        }
+    }
+    //下一页
+    function next(num){
+        var parm=$(".container input, .container select,.container textarea").serialize()
+        var page=$(".active").text()
+        if(parseInt(page)<=parseInt(num)-1){
+            parm+="&index="+parseInt(page)+"&size=5"
+            selall(parm,page+1)
+        }
+
+    }
+    //点击分页的数字
+    function numbtn(num){
+        if($(this).hasClass("active")==false){
+            // var page=$(this).text();
+            var parm=$(".container input, .container select,.container textarea").serialize()
+            parm+="&index="+(parseInt(num)-1)+"&size=5"
+            selall(parm,parseInt(num)-1)
+        }
+    }
+    //删除题目信息
+    function del(id){
+        if(confirm("你确定要删除吗？")){
+            $.ajax({
+                type:"DELETE",
+                url:"https://39.106.118.44:8443/library/quiz/"+id,
+                data:"",
+                success:function(data){
+                    var parm=$(".container input, .container select,.container textarea").serialize()
+                    parm+="&index=0&size=5"
+                    selall(parm,1)
+                }
+            })
+        }
+    }
+    //显示修改的div
+    function show(id){
+        // alert(id)
+        $.ajax({
+            type:"GET",
+            url:"https://39.106.118.44:8443/library/quiz/"+id+"/",
+            data:"",
+            success:function(data){
+                console.log(data)
+                $(".update").css({display:"block"})
+                frm.questionTitle.value=data.question.title;
+                frm.answer.value=data.answer
+                frm.level.value=data.level;
+                frm.id.value=data.id;
+                frm.type.value=data.type;
+                if(data.type==1||data.type==2){
+                    $(".questionsel").css({display:"block"});
+                    $(".questionsel p").remove();
+                    for(var i=0;i<data.question.option.length;i++){
+                        $(".questionsel .xx").append("<p><input type='text' name='questionOptions' class='xx1' value='"+data.question.option[i]+"'><input type='button' value=' - ' class='del'></p>")
+                    }
+                }
+                else{
+                    $(".questionsel").css({display:"none"});
+                }
+
+                $(".bq p lable").each(function(){
+                    for(var i=0;i<data.tags.length;i++){
+                        if($(this).text()==data.tags[i]){
+                            $(this).find("input").prop({checked:true})
+                        }
+                    }
+                })
+
+            }
+        })
+    }
+</script>
+</head>
+<body style="overflow:-Scroll;overflow-x: hidden">
+    <div>
+        <div class="header">
+            <div class="header-1">
+                <a href="./index.html"><img src="img/logo.jpg" alt=""></a>
+            <ul class="one">
+                <li><a href="">实战项目</a></li>
+                <li><a href="">在线接口</a></li>
+                <li><a href="">精品案例</a></li>
+                <li><a href="">资料中心</a></li>
+                <li class="text"><a href="">试题管理</a>
+                    <ul class="nine">
+                            <li><a href="./luti.html">录题系统</a></li>
+                            <li><a href="./chati.html">查题系统</a></li>
+                            <li><a href="./chuti.html">出题系统</a></li>
+                            <li><a href="">标签系统</a></li>
+                        </ul></li>
+                        <p class="two"><a href="./login.html">登录</a>
+                            <a href="./zhuce.html" cla>注册</a></p> 
+            </ul> 
+        </div>
+    </div>
+<div class="center">
+       <div class="container">
+           <h1>在线查询</h1>
+           <form>
+                <table>
+                    <tr>
+                        <td>
+                            题型：
+                        </td>
+                        <td>
+                                <select class="tx" name="type">
+                                    <option value="1">单选题</option>
+                                    <option value="2">多选题</option>
+                                    <option value="3" selected>填空题</option>
+                                    <option value="4">判断题</option>
+                                    <option value="5">简答题</option>
+                                    <option value="6">输出题</option>
+                                    <option value="7">编程题</option>
+                                </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            题干：
+                        </td>
+                        <td>
+                            <textarea name="questionTitle" id="" cols="40" rows="5"></textarea>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            标签组：
+                        </td>
+                        <td class="bq">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            题目难度
+                        </td>
+                        <td>
+                            <select class="nd" name="level">
+                                <option value="1">简单</option>
+                                <option value="2">容易</option>
+                                <option value="3" selected>中</option>
+                                <option value="4">难</option>
+                                <option value="5">非常难</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <input type="button" value="查询" class="ct">
+            <!-- <input type="button" value="重置" class="cz"> -->
+            <div class="data">
+                <!-- <div class="item">
+                    <div class="xiang">
+                        <p class="title">以下哪些方式可以实现页面隐藏（）</p>
+                        <p class="anter">A</p>
+                        <span class="taglab">HTML/CSS</span>
+                        <p class="qi"><span>题型：单选题</span><span>难度：简单</span></p>
+                    </div>
+                    <p><input type="button" value="删除" class="del"></p>
+                </div> -->
+            </div>
+            <div class="list">
+                <ul>
+                    <!-- <li><span class="page-first">《</span></li>
+                    <li><span class="page-prev">&lt;</span></li>
+                    <li><span class="page-link active">1</span></li>
+                    <li><span class="page-link">2</span></li>
+                    <li><span class="page-link">3</span></li>
+                    <li><span class="page-next">&gt;</span></li>
+                    <li><span class="page-last">》</span></li> -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="update">
+    <form name="frm" class="frm">
+        <span><a href="#" class="cloed"> X </a></span>
+        <h2>在线修改</h2>
+        <table>
+            <tr>
+                <td>
+                    题干：
+                </td>
+                <td>
+                    <textarea name="questionTitle" id="" cols="40" rows="5"></textarea>
+                    <span class="lab3">*必填</span>
+                </td>
+            </tr>
+            <tr class="questionsel">
+                <td>
+                    <!-- <p>选项：</p> -->
+                    选项：
+                </td>
+                <td class="xx">
+                    <input type="button" value=" + " class="add">
+                    <p>
+                        <input type="text" name="questionOptions" class="xx1">
+                        <input type="button" value=" - " class="del">
+                        <span class="lab1">*必填</span>
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    题目答案：
+                </td>
+                <td>
+                    <textarea name="answer" id="" cols="40" rows="5" ></textarea>
+                    <span class="lab4">*必填</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    标签组：
+                </td>
+                <td class="bq">
+                    <span class="lab2">*必填</span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    题目难度：
+                </td>
+                <td>
+                    <select class="nd" name="level">
+                        <option value="1">简单</option>
+                        <option value="2">容易</option>
+                        <option value="3" selected>中</option>
+                        <option value="4">难</option>
+                        <option value="5">非常难</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <input type="button" value="提交" id="lr" class="tj">
+        <span class="lab5"></span>
+        <input type="hidden" name="id">
+        <input type="hidden" name="type">
+    </form>
+</div>
+<div class="footer">
+    <img src="img/logo.jpg" alt="" class="img1">
+    <p class="five">
+        <a href="">问题反馈</a> |<a href="">邮箱</a>
+        © 2019 HaiKang
+        黑ICP备06004322号
+    </p>
+    <p class="six">
+            <img src="img/wexin.jpg" alt="" class="img2">微信公众号
+    </p>
+</div>
+</body>
+</html>
